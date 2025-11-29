@@ -1,0 +1,28 @@
+D:\VisualStudio\projects\oop1\oop1\obj\Debug\net8.0\oop1.GeneratedMSBuildEditorConfig.editorconfig
+D:\VisualStudio\projects\oop1\oop1\obj\Debug\net8.0\oop1.AssemblyInfoInputs.cache
+D:\VisualStudio\projects\oop1\oop1\obj\Debug\net8.0\oop1.AssemblyInfo.cs
+D:\VisualStudio\projects\oop1\oop1\obj\Debug\net8.0\oop1.csproj.CoreCompileInputs.cache
+D:\VisualStudio\projects\oop1\oop1\bin\Debug\net8.0\oop1.deps.json
+D:\VisualStudio\projects\oop1\oop1\bin\Debug\net8.0\oop1.dll
+D:\VisualStudio\projects\oop1\oop1\bin\Debug\net8.0\oop1.pdb
+D:\VisualStudio\projects\oop1\oop1\obj\Debug\net8.0\oop1.dll
+D:\VisualStudio\projects\oop1\oop1\obj\Debug\net8.0\refint\oop1.dll
+D:\VisualStudio\projects\oop1\oop1\obj\Debug\net8.0\oop1.pdb
+D:\VisualStudio\projects\oop1\oop1\obj\Debug\net8.0\ref\oop1.dll
+D:\VisualStudio\projects\oop1\oop1\bin\Debug\net8.0\oop1.exe
+D:\VisualStudio\projects\oop1\oop1\bin\Debug\net8.0\oop1.runtimeconfig.json
+D:\VisualStudio\projects\oop1\oop1\obj\Debug\net8.0\oop1.genruntimeconfig.cache
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\bin\Debug\net8.0\oop1.exe
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\bin\Debug\net8.0\oop1.deps.json
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\bin\Debug\net8.0\oop1.runtimeconfig.json
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\bin\Debug\net8.0\oop1.dll
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\bin\Debug\net8.0\oop1.pdb
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\oop1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\oop1.AssemblyInfoInputs.cache
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\oop1.AssemblyInfo.cs
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\oop1.csproj.CoreCompileInputs.cache
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\oop1.dll
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\refint\oop1.dll
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\oop1.pdb
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\oop1.genruntimeconfig.cache
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\ref\oop1.dll
