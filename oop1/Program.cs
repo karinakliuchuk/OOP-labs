@@ -1,54 +1,55 @@
 ﻿using System;
 using System.Text;
-using OOP2;
-using OOP2.Wizards;
-using OOP2.Duels;
+using System.Linq;
+using labaoop3;
+using labaoop3.Data;
+using labaoop3.Repository.Impl;
+using labaoop3.Service.Base;
+using labaoop3.Service.Impl;
 
-class Program
+namespace labaoop3
 {
-    static void Main()
+    class Program
     {
-        Console.OutputEncoding = Encoding.UTF8;
-        Console.InputEncoding = Encoding.UTF8;
+        static void Main()
+        {
+            Console.OutputEncoding = Encoding.UTF8;
 
-        // Створюємо закляття
-        Spell stupify = new Spell("Ступефай", 15, SpellEffect.Stunning);
-        Spell petrificus = new Spell("Петрифікус", 20, SpellEffect.Stunning);
-        Spell expelliarmus = new Spell("Експеліармус", 25, SpellEffect.Disarming);
-        Spell incendio = new Spell("Інсендіо", 18, SpellEffect.Damage);
+            var db = new HogwartsDbContext();
 
-        // Створюємо чарівників
-        BaseWizard voldemort = new AggressiveWizard("Лорд Волдеморт", "Слизерин");
-        BaseWizard draco = new DefensiveWizard("Драко Мелфой", "Слизерин");
-        BaseWizard harry = new RandomWizard("Гаррі Поттер", "Гріффіндор");
+            var wizardRepo = new WizardRepository(db);
+            var spellRepo = new SpellRepository(db);
+            var duelRepo = new DuelHistoryRepository(db);
 
-        // Навчання заклять
-        voldemort.LearnSpell(expelliarmus);
-        voldemort.LearnSpell(petrificus);
+            IWizardService wizardService = new WizardService(wizardRepo, spellRepo);
+            ISpellService spellService = new SpellService(spellRepo);
+            IDuelService duelService = new DuelService(wizardRepo, spellRepo, duelRepo);
 
-        draco.LearnSpell(stupify);
-        draco.LearnSpell(incendio);
+            Console.WriteLine("Wizards in DB:");
+            foreach (var w in wizardService.GetAll())
+                Console.WriteLine($" {w.Id}: {w.Name} ({w.House})");
 
-        harry.LearnSpell(stupify);
-        harry.LearnSpell(expelliarmus);
+            var wizardList = wizardService.GetAll().ToList();
 
-        // Створюємо фабрику дуелей та клуб
-        DuelFactory duelFactory = new DuelFactory();
-        DuelingClub club = new DuelingClub();
+            if (wizardList.Count < 2)
+            {
+                Console.WriteLine("\nНедостатньо чарівників для дуелі.");
+                return;
+            }
 
-        // Проведення дуелей
-        Console.WriteLine("=== ПРОВЕДЕННЯ ДУЕЛЕЙ ===");
-        club.HostDuel(voldemort, draco, duelFactory.CreateStandard());
-        club.HostDuel(harry, draco, duelFactory.CreateDeadly());
-        club.HostDuel(voldemort, harry, duelFactory.CreateTraining());
+            var w1 = wizardList[0];
+            var w2 = wizardList[1];
 
-        // Вивід історії дуелей
-        Console.WriteLine("\n=== ІСТОРІЯ ДУЕЛЕЙ ===");
-        voldemort.GetDuelHistory();
-        draco.GetDuelHistory();
-        harry.GetDuelHistory();
+            Console.WriteLine($"\nПроведення Ranked дуелі: {w1.Name} vs {w2.Name}");
+            var duelResultDto = duelService.HostDuel(w1.Id, w2.Id, DuelType.Ranked);
 
-        Console.WriteLine("Натисніть будь-яку клавішу для виходу...");
-        Console.ReadKey();
+            Console.WriteLine("\n=== Лог дуелі ===");
+            Console.WriteLine(duelResultDto.TurnLog);
+            Console.WriteLine($"Переможець: {duelResultDto.WinnerName}, Лузер: {duelResultDto.LoserName}, Рейтинг на кону: {duelResultDto.RatingStake}");
+
+            Console.WriteLine("\nAll Duel Histories in DB:");
+            foreach (var d in duelRepo.GetAll())
+                Console.WriteLine($" {d.Id}: WinnerId={d.WinnerId}, LoserId={d.LoserId}");
+        }
     }
 }
