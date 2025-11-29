@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Text;
+using OOP2;
+using OOP2.Wizards;
+using OOP2.Duels;
 
 class Program
 {
@@ -8,57 +11,44 @@ class Program
         Console.OutputEncoding = Encoding.UTF8;
         Console.InputEncoding = Encoding.UTF8;
 
-        Console.WriteLine("=== Магічний клуб дуелянтів ===\n");
+        // Створюємо закляття
+        Spell stupify = new Spell("Ступефай", 15, SpellEffect.Stunning);
+        Spell petrificus = new Spell("Петрифікус", 20, SpellEffect.Stunning);
+        Spell expelliarmus = new Spell("Експеліармус", 25, SpellEffect.Disarming);
+        Spell incendio = new Spell("Інсендіо", 18, SpellEffect.Damage);
 
-        // Ініціалізація заклинань
-        var spellStun1 = new Spell("Ступефай", 15, SpellEffect.Stunning);
-        var spellStun2 = new Spell("Петрифікус Тоталус", 20, SpellEffect.Stunning);
-        var spellDisarm = new Spell("Експеліармус", 25, SpellEffect.Disarming);
-        var spellCut = new Spell("Сектумсемпра", 30, SpellEffect.Damage);
-        var spellShield = new Spell("Протеґо", 0, SpellEffect.Disarming);
-        var spellFire = new Spell("Інсендіо", 18, SpellEffect.Damage);
-        var spellLevitate = new Spell("Левікорпус", 22, SpellEffect.Stunning);
+        // Створюємо чарівників
+        BaseWizard voldemort = new AggressiveWizard("Лорд Волдеморт", "Слизерин");
+        BaseWizard draco = new DefensiveWizard("Драко Мелфой", "Слизерин");
+        BaseWizard harry = new RandomWizard("Гаррі Поттер", "Гріффіндор");
 
-        // Створення персонажів
-        var wizDumbledore = new Wizard("Альбус Дамблдор", "Гріффіндор");
-        var wizNarcissa = new Wizard("Нарциса Мелфой", "Слизерин");
-        var wizSirius = new Wizard("Сіріус Блек", "Гріффіндор");
+        // Навчання заклять
+        voldemort.LearnSpell(expelliarmus);
+        voldemort.LearnSpell(petrificus);
 
-        // Навчання чарівників
-        wizDumbledore.LearnSpell(spellDisarm);
-        wizDumbledore.LearnSpell(spellShield);
-        wizDumbledore.LearnSpell(spellStun2);
-        wizDumbledore.LearnSpell(spellFire);
+        draco.LearnSpell(stupify);
+        draco.LearnSpell(incendio);
 
-        wizNarcissa.LearnSpell(spellCut);
-        wizNarcissa.LearnSpell(spellStun1);
-        wizNarcissa.LearnSpell(spellLevitate);
+        harry.LearnSpell(stupify);
+        harry.LearnSpell(expelliarmus);
 
-        wizSirius.LearnSpell(spellStun1);
-        wizSirius.LearnSpell(spellDisarm);
-        wizSirius.LearnSpell(spellShield);
-        wizSirius.LearnSpell(spellFire);
+        // Створюємо фабрику дуелей та клуб
+        DuelFactory duelFactory = new DuelFactory();
+        DuelingClub club = new DuelingClub();
 
-        // Створення клубу дуелей
-        var duelClub = new DuelingClub();
+        // Проведення дуелей
+        Console.WriteLine("=== ПРОВЕДЕННЯ ДУЕЛЕЙ ===");
+        club.HostDuel(voldemort, draco, duelFactory.CreateStandard());
+        club.HostDuel(harry, draco, duelFactory.CreateDeadly());
+        club.HostDuel(voldemort, harry, duelFactory.CreateTraining());
 
-        // Проведення боїв
-        Console.WriteLine("=== ДУЕЛЬ 1: Дамблдор проти Нарциси ===");
-        duelClub.HostDuel(wizDumbledore, wizNarcissa);
+        // Вивід історії дуелей
+        Console.WriteLine("\n=== ІСТОРІЯ ДУЕЛЕЙ ===");
+        voldemort.GetDuelHistory();
+        draco.GetDuelHistory();
+        harry.GetDuelHistory();
 
-        Console.WriteLine("=== ДУЕЛЬ 2: Сіріус проти Нарциси ===");
-        duelClub.HostDuel(wizSirius, wizNarcissa);
-
-        Console.WriteLine("=== ДУЕЛЬ 3: Дамблдор проти Сіріуса ===");
-        duelClub.HostDuel(wizDumbledore, wizSirius);
-
-        // Історія дуелей
-        Console.WriteLine("\n=== ЗВІТ ПРО ДУЕЛІ ===");
-        wizDumbledore.GetDuelHistory();
-        wizNarcissa.GetDuelHistory();
-        wizSirius.GetDuelHistory();
-
-        Console.WriteLine("\nНатисніть будь-яку клавішу, щоб завершити...");
+        Console.WriteLine("Натисніть будь-яку клавішу для виходу...");
         Console.ReadKey();
     }
 }

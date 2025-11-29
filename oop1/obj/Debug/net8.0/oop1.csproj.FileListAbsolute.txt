@@ -26,3 +26,4 @@ C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug
 C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\oop1.pdb
 C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\oop1.genruntimeconfig.cache
 C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\ref\oop1.dll
+C:\Users\karin\OneDrive\Робочий стіл\OOP-labs\OOP-labs\oop1\obj\Debug\net8.0\oop1.sourcelink.json
